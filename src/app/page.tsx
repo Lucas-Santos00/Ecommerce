@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { TabsDemo } from "./authentication/page";
 
 export default function Home() {
   return (
     <>
-      <Button>Click me</Button>
+      <TabsDemo />
     </>
   );
 }
