@@ -75,7 +75,7 @@ const SingUpForm = () => {
 
   return (
     <>
-      <Card>
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>Crie sua conta</CardTitle>
           <CardDescription>Crie sua conta para continuar.</CardDescription>
