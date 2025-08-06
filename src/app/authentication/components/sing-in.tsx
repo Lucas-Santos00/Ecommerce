@@ -21,6 +21,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { createAuthClient } from "better-auth/client";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email("E-mail invalido!"),
@@ -30,6 +33,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const SingInForm = () => {
+  const authClient = createAuthClient();
+  const router = useRouter();
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,9 +44,19 @@ const SingInForm = () => {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    console.log("Validado e enviado");
-    console.log(values);
+  async function onSubmit(values: FormValues) {
+    const { data, error } = await authClient.signIn.email({
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: () => {
+          toast.error("E-mail ou senha inválido");
+        },
+      },
+    });
   }
 
   return (
@@ -61,11 +77,7 @@ const SingInForm = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Digite seu e-mail"
-                        {...field}
-                        type="password"
-                      />
+                      <Input placeholder="Digite seu e-mail" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

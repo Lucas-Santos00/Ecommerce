@@ -137,6 +137,7 @@ const SingUpForm = () => {
                       <Input
                         placeholder="Digite sua senha novamente"
                         {...field}
+                        type="password"
                       />
                     </FormControl>
                     <FormMessage />
