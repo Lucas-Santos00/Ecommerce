@@ -21,6 +21,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { createAuthClient } from "better-auth/client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -37,6 +40,9 @@ const formSchema = z
 type FormValues = z.infer<typeof formSchema>;
 
 const SingUpForm = () => {
+  const router = useRouter();
+  const authClient = createAuthClient();
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,9 +53,24 @@ const SingUpForm = () => {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    console.log("Validado e enviado");
-    console.log(values);
+  async function onSubmit(values: FormValues) {
+    const { data, error } = await authClient.signUp.email({
+      name: values.nome,
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (error) => {
+          if (error.error.code === "USER_ALREADY_EXISTS") {
+            toast.error("E-mail já cadastrado");
+          } else {
+            toast.error(error.error.message);
+          }
+        },
+      },
+    });
   }
 
   return (
@@ -96,7 +117,11 @@ const SingUpForm = () => {
                   <FormItem>
                     <FormLabel>Senha</FormLabel>
                     <FormControl>
-                      <Input placeholder="Digite sua senha" {...field} />
+                      <Input
+                        placeholder="Digite sua senha"
+                        {...field}
+                        type="password"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

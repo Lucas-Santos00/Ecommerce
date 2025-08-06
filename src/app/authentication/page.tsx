@@ -20,3 +20,5 @@ export function TabsDemo() {
     </div>
   );
 }
+
+export default TabsDemo;

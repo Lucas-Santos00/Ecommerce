@@ -1,9 +1,7 @@
-import { TabsDemo } from "./authentication/page";
-
 export default function Home() {
   return (
     <>
-      <TabsDemo />
+      <h1>Pagina inicial</h1>
     </>
   );
 }
