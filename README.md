@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📱 E-commerce Mobile - Bootcamp Project
 
-## Getting Started
+<!-- Área para imagens do projeto -->
+<p align="center">
+  <img width="240" height="680" alt="Screenshot 1" src="https://github.com/user-attachments/assets/91a21991-bee6-4f37-b213-8d80a3bdd33b" />
+  <img width="200" height="523" alt="Screenshot 2" src="https://github.com/user-attachments/assets/b589a381-f597-48b5-9a5b-b63e113574b5" />
+</p>
 
-First, run the development server:
+## 📋 Sobre o Projeto
+Este é um **projeto parcial de E-commerce**, desenvolvido durante um **Bootcamp**, com foco **exclusivo em dispositivos mobile**.  
+O objetivo principal não foi criar um produto final para produção, mas sim **aprimorar conhecimentos práticos** em autenticação, integração com APIs externas, organização de código e fluxo de compra.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tecnologias Utilizadas
+- **[Next.js](https://nextjs.org/)** – Framework React para SSR e SSG.
+- **[Drizzle ORM](https://orm.drizzle.team/)** – ORM moderno e tipado para banco de dados.
+- **[TailwindCSS](https://tailwindcss.com/)** – Estilização rápida e responsiva.
+- **[BetterAuth](https://better-auth.com/)** – Gerenciamento de autenticação.
+- **[Google OAuth API](https://developers.google.com/identity)** – Login via conta Google.
+- **[Stripe API](https://stripe.com/)** – Integração de pagamentos online.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Funcionalidades
+- 📱 Layout **Mobile** (Apenas em mobile).
+- 🔐 Login e criação de usuário via **Google**.
+- 🛒 Catálogo de produtos.
+- 💳 Pagamentos via **Stripe**.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Estrutura do Projeto
+```plaintext
+/
+├── components/       # Componentes reutilizáveis
+├── pages/            # Rotas e páginas
+├── styles/           # Configurações de estilo (Tailwind)
+├── lib/              # Configurações de ORM, autenticação e APIs
+├── public/           # Imagens e assets
+└── README.md
